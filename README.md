@@ -1,7 +1,6 @@
-
-<div align="center">
-  [https://wallpapercrafter.com/th8001/595755-anime-girls-Gawr-Gura-Hololive-Virtual-Youtuber.jpg]
-</div>
+<p align="center">
+  <img src="https://wallpapercrafter.com/th8001/595755-anime-girls-Gawr-Gura-Hololive-Virtual-Youtuber.jpg" alt="Image description">
+</p>
 
 <hr>
 
@@ -16,6 +15,7 @@ NyanVim is Lazy Vim Improved Projects.
 - 📦 Comes with a wealth of plugins pre-configured and ready to use
 
 ## ⚡️ Requirements
+
 - LazyVim
 - Neovim >= **0.9.0** (needs to be built with **LuaJIT**)
 - Git >= **2.19.0** (for partial clones support)

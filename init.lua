@@ -1,15 +1,11 @@
-require('base')
-require('highlights')
-require('maps')
-require('plugins')
-
-local has = vim.fn.has
-local is_mac = has "macunix"
-local is_win = has "win32"
-
-if is_mac then
-  require('macos')
+-- bootstrap lazy.nvim, LazyVim and your plugins
+if vim.loader then
+  vim.loader.enable()
 end
-if is_win then
-  require('windows')
+
+_G.dd = function(...)
+  require("util.debug").dump(...)
 end
+vim.print = _G.dd
+
+require("config.lazy")

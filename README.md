@@ -1,7 +1,4 @@
-<p align="center">
-  <img src="https://wallpapercrafter.com/th8001/595755-anime-girls-Gawr-Gura-Hololive-Virtual-Youtuber.jpg" alt="">
-</p>
-
+![Maririn312](logo.png)
 
 <hr>
 

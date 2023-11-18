@@ -4,14 +4,6 @@
 
 <hr>
 
-<h4 align="center">
-  <a href="https://lazyvim.github.io/installation">Install</a>
-  ·
-  <a href="https://lazyvim.github.io/configuration">Configure</a>
-  ·
-  <a href="https://lazyvim.github.io">Docs</a>
-</h4>
-
 <div align="center"><p>
     <a href="https://github.com/LazyVim/LazyVim/releases/latest">
       <img alt="Latest release" src="https://img.shields.io/github/v/release/LazyVim/LazyVim?style=for-the-badge&logo=starship&color=C9CBFF&logoColor=D9E0EE&labelColor=302D41&include_prerelease&sort=semver" />
@@ -36,7 +28,7 @@
     </a>
 </div>
 
-LazyVim is a Neovim setup powered by [💤 lazy.nvim](https://github.com/folke/lazy.nvim)
+NyanVim is a LazyVim setup powered by [💤 lazy.nvim](https://github.com/folke/lazy.nvim)
 to make it easy to customize and extend your config.
 Rather than having to choose between starting from scratch or using a
 pre-made distro, LazyVim offers the best of both worlds - the flexibility
@@ -55,7 +47,7 @@ to tweak your config as needed, along with the convenience of a pre-configured s
 - 📦 Comes with a wealth of plugins pre-configured and ready to use
 
 ## ⚡️ Requirements
-
+- LazyVim
 - Neovim >= **0.9.0** (needs to be built with **LuaJIT**)
 - Git >= **2.19.0** (for partial clones support)
 - a [Nerd Font](https://www.nerdfonts.com/) **_(optional)_**
@@ -105,15 +97,11 @@ docker run -w /root -it --rm alpine:edge sh -uelic '
   nvim
   ```
 
-  Refer to the comments in the files on how to customize **LazyVim**.
+  Refer to the comments in the files on how to customize **NyanVim**.
 
 </details>
 
 ---
-
-There's a great video created by [@elijahmanor](https://github.com/elijahmanor) with a walkthrough to get started.
-
-[![Watch the video](https://img.youtube.com/vi/N93cTbtLCIM/hqdefault.jpg)](https://www.youtube.com/watch?v=N93cTbtLCIM)
 
 ## 📂 File Structure
 
@@ -139,8 +127,3 @@ will be automatically loaded by [lazy.nvim](https://github.com/folke/lazy.nvim)
 │       └── spec2.lua
 └── init.lua
 </pre>
-
-## ⚙️ Configuration
-
-Refer to the [docs](https://nyanvim.github.io)
-

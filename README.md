@@ -1,7 +1,5 @@
 ![Maririn312](https://github.com/maririn312/dotfiles/blob/main/logo.png)
 
-<hr>
-
 NyanVim is Lazy Vim Improved Projects.
 
 ## ✨ Features

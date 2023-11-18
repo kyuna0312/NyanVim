@@ -1,4 +1,4 @@
-![Maririn312](logo.png)
+![Maririn312](https://github.com/maririn312/dotfiles/blob/main/logo.png)
 
 <hr>
 

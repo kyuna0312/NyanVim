@@ -1,4 +1,4 @@
-![image](https://github.com/NyanLinux/NyanVim/assets/31735410/5e5d3d62-9a06-46ce-b56d-077ce97a2618)<div align="center">
+<div align="center">
   <img src="https://wallpapercrafter.com/th8001/595755-anime-girls-Gawr-Gura-Hololive-Virtual-Youtuber.jpg">
 </div>
 

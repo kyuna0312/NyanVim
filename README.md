@@ -1,64 +1,146 @@
-# NyanVim
-# My Personal Custom vim project if u want use this cute little vim
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/292349/213446185-2db63fd5-8c84-459c-9f04-e286382d6e80.png">
+</div>
 
+<hr>
 
-![nyamvim screenshot](./images/a1.png)
+<h4 align="center">
+  <a href="https://lazyvim.github.io/installation">Install</a>
+  ·
+  <a href="https://lazyvim.github.io/configuration">Configure</a>
+  ·
+  <a href="https://lazyvim.github.io">Docs</a>
+</h4>
 
-![nyamvim screenshot](./images/a2.png)
-![nyamvim screenshot](./images/a3.png)
+<div align="center"><p>
+    <a href="https://github.com/LazyVim/LazyVim/releases/latest">
+      <img alt="Latest release" src="https://img.shields.io/github/v/release/LazyVim/LazyVim?style=for-the-badge&logo=starship&color=C9CBFF&logoColor=D9E0EE&labelColor=302D41&include_prerelease&sort=semver" />
+    </a>
+    <a href="https://github.com/LazyVim/LazyVim/pulse">
+      <img alt="Last commit" src="https://img.shields.io/github/last-commit/LazyVim/LazyVim?style=for-the-badge&logo=starship&color=8bd5ca&logoColor=D9E0EE&labelColor=302D41"/>
+    </a>
+    <a href="https://github.com/LazyVim/LazyVim/blob/main/LICENSE">
+      <img alt="License" src="https://img.shields.io/github/license/LazyVim/LazyVim?style=for-the-badge&logo=starship&color=ee999f&logoColor=D9E0EE&labelColor=302D41" />
+    </a>
+    <a href="https://github.com/LazyVim/LazyVim/stargazers">
+      <img alt="Stars" src="https://img.shields.io/github/stars/LazyVim/LazyVim?style=for-the-badge&logo=starship&color=c69ff5&logoColor=D9E0EE&labelColor=302D41" />
+    </a>
+    <a href="https://github.com/LazyVim/LazyVim/issues">
+      <img alt="Issues" src="https://img.shields.io/github/issues/LazyVim/LazyVim?style=for-the-badge&logo=bilibili&color=F5E0DC&logoColor=D9E0EE&labelColor=302D41" />
+    </a>
+    <a href="https://github.com/LazyVim/LazyVim">
+      <img alt="Repo Size" src="https://img.shields.io/github/repo-size/LazyVim/LazyVim?color=%23DDB6F2&label=SIZE&logo=codesandbox&style=for-the-badge&logoColor=D9E0EE&labelColor=302D41" />
+    </a>
+    <a href="https://twitter.com/intent/follow?screen_name=folke">
+      <img alt="follow on Twitter" src="https://img.shields.io/twitter/follow/folke?style=for-the-badge&logo=twitter&color=8aadf3&logoColor=D9E0EE&labelColor=302D41" />
+    </a>
+</div>
 
-![nyamvim screenshot](./images/a4.png)
+LazyVim is a Neovim setup powered by [💤 lazy.nvim](https://github.com/folke/lazy.nvim)
+to make it easy to customize and extend your config.
+Rather than having to choose between starting from scratch or using a
+pre-made distro, LazyVim offers the best of both worlds - the flexibility
+to tweak your config as needed, along with the convenience of a pre-configured setup.
 
+![image](https://user-images.githubusercontent.com/292349/211285846-0b7bb3bf-0462-4029-b64c-4ee1d037fc1c.png)
 
-# Download Guidence
+![image](https://user-images.githubusercontent.com/292349/213447056-92290767-ea16-430c-8727-ce994c93e9cc.png)
 
-1. Install nvim
-```shell
-  sudo apt-get install nvim
+## ✨ Features
+
+- 🔥 Transform your Neovim into a full-fledged IDE
+- 💤 Easily customize and extend your config with [lazy.nvim](https://github.com/folke/lazy.nvim)
+- 🚀 Blazingly fast
+- 🧹 Sane default settings for options, autocmds, and keymaps
+- 📦 Comes with a wealth of plugins pre-configured and ready to use
+
+## ⚡️ Requirements
+
+- Neovim >= **0.9.0** (needs to be built with **LuaJIT**)
+- Git >= **2.19.0** (for partial clones support)
+- a [Nerd Font](https://www.nerdfonts.com/) **_(optional)_**
+- a **C** compiler for `nvim-treesitter`. See [here](https://github.com/nvim-treesitter/nvim-treesitter#requirements)
+
+## 🚀 Getting Started
+
+You can find a starter template for **LazyVim** [here](https://github.com/LazyVim/starter)
+
+<details><summary>Try it with Docker</summary>
+
+```sh
+docker run -w /root -it --rm alpine:edge sh -uelic '
+  apk add git lazygit neovim ripgrep alpine-sdk --update
+  git clone https://github.com/LazyVim/starter ~/.config/nvim
+  cd ~/.config/nvim
+  nvim
+'
 ```
 
-2. Install packer
-```shell 
-git clone --depth 1 https://github.com/wbthomason/packer.nvim\
- ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-```
+</details>
 
-3. Install NyanVim
-```shell 
-cd ~/config/nvim 
-git clone  https://github.com/maririn312/NyanVim.git
-```
+<details><summary>Install the <a href="https://github.com/LazyVim/starter">LazyVim Starter</a></summary>
 
+- Make a backup of your current Neovim files:
 
+  ```sh
+  mv ~/.config/nvim ~/.config/nvim.bak
+  mv ~/.local/share/nvim ~/.local/share/nvim.bak
+  ```
 
+- Clone the starter
 
+  ```sh
+  git clone https://github.com/LazyVim/starter ~/.config/nvim
+  ```
 
-## Neovim setup
+- Remove the `.git` folder, so you can add it to your own repo later
 
-Requires [Neovim](https://neovim.io/) (>= 0.8)
+  ```sh
+  rm -rf ~/.config/nvim/.git
+  ```
 
-- [wbthomason/packer.nvim](https://github.com/wbthomason/packer.nvim) - A plugin manager for Neovim
-- [svrana/neosolarized.nvim](https://github.com/svrana/neosolarized.nvim) - A truecolor, solarized dark colorscheme
-- [nvim-lualine/lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) - A blazing fast and easy to configure Neovim statusline written in Lua
-- [onsails/lspkind-nvim](https://github.com/onsails/lspkind-nvim) - VSCode-like pictograms
-- [L3MON4D3/LuaSnip](https://github.com/L3MON4D3/LuaSnip) - Snippet Engine for Neovim written in Lua
-- [hrsh7th/cmp-nvim-lsp](https://github.com/hrsh7th/cmp-nvim-lsp) - nvim-cmp source for neovim's built-in LSP
-- [hrsh7th/cmp-buffer](https://github.com/hrsh7th/cmp-buffer) - nvim-cmp source for buffer words
-- [hrsh7th/nvim-cmp](https://github.com/hrsh7th/nvim-cmp) - A completion engine plugin for neovim written in Lua
-- [neovim/nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) - A collection of configurations for Neovim's built-in LSP
-- [jose-elias-alvarez/null-ls.nvim](https://github.com/jose-elias-alvarez/null-ls.nvim) - Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua.
-- [williamboman/mason.nvim](https://github.com/williamboman/mason.nvim) - Portable package manager for Neovim that runs everywhere Neovim runs. Easily install and manage LSP servers, DAP servers, linters, and formatters
-- [williamboman/mason-lspconfig.nvim](https://github.com/williamboman/mason-lspconfig.nvim) - Extension to mason.nvim that makes it easier to use lspconfig with mason.nvim
-- [glepnir/lspsaga.nvim](https://github.com/glepnir/lspsaga.nvim) - A light-weight lsp plugin based on neovim's built-in lsp with a highly performant UI
-- [nvim-treesitter/nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) - [Treesitter](https://github.com/tree-sitter/tree-sitter) configurations and abstraction layer for Neovim
-- [kyazdani42/nvim-web-devicons](https://github.com/kyazdani42/nvim-web-devicons) - Lua `fork` of vim-web-devicons for neovim
-- [nvim-telescope/telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) - A highly extendable fuzzy finder over lists
-- [nvim-telescope/telescope-file-browser.nvim](https://github.com/nvim-telescope/telescope-file-browser.nvim) - File Browser extension for telescope.nvim
-- [windwp/nvim-autopairs](https://github.com/windwp/nvim-autopairs) - Autopairs
-- [windwp/nvim-ts-autotag](https://github.com/windwp/nvim-ts-autotag) - Use treesitter to auto close and auto rename html tag
-- [norcalli/nvim-colorizer.lua](https://github.com/norcalli/nvim-colorizer.lua) - A high-performance color highlighter
-- [akinsho/nvim-bufferline.lua](https://github.com/akinsho/nvim-bufferline.lua) - A snazzy bufferline
-- [lewis6991/gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim) - Git integration for buffers
-- [dinhhuy258/git.nvim](https://github.com/dinhhuy258/git.nvim) - A simple clone of the plugin vim-fugitive
-- [folke/zen-mode.nvim](https://github.com/folke/zen-mode.nvim) - Distraction-free mode
-- [iamcco/markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim) - Markdown live preview
+- Start Neovim!
+
+  ```sh
+  nvim
+  ```
+
+  Refer to the comments in the files on how to customize **LazyVim**.
+
+</details>
+
+---
+
+There's a great video created by [@elijahmanor](https://github.com/elijahmanor) with a walkthrough to get started.
+
+[![Watch the video](https://img.youtube.com/vi/N93cTbtLCIM/hqdefault.jpg)](https://www.youtube.com/watch?v=N93cTbtLCIM)
+
+## 📂 File Structure
+
+The files under config will be automatically loaded at the appropriate time,
+so you don't need to require those files manually.
+**LazyVim** comes with a set of default config files that will be loaded
+**_before_** your own. See [here](https://github.com/LazyVim/LazyVim/tree/main/lua/lazyvim/config)
+
+You can add your custom plugin specs under `lua/plugins/`. All files there
+will be automatically loaded by [lazy.nvim](https://github.com/folke/lazy.nvim)
+
+<pre>
+~/.config/nvim
+├── lua
+│   ├── config
+│   │   ├── autocmds.lua
+│   │   ├── keymaps.lua
+│   │   ├── lazy.lua
+│   │   └── options.lua
+│   └── plugins
+│       ├── spec1.lua
+│       ├── **
+│       └── spec2.lua
+└── init.lua
+</pre>
+
+## ⚙️ Configuration
+
+Refer to the [docs](https://nyanvim.github.io)
+

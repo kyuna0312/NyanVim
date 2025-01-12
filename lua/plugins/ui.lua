@@ -9,7 +9,29 @@ return {
   },
   {
     "folke/noice.nvim",
-    enabled = false,
+    event = "VeryLazy",
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify",
+    },
+    config = function()
+      require("noice").setup({
+        lsp = {
+          override = {
+            ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+            ["vim.lsp.util.stylize_markdown"] = true,
+            ["cmp.entry.get_documentation"] = true,
+          },
+        },
+        presets = {
+          bottom_search = true,
+          command_palette = true,
+          long_message_to_split = true,
+          inc_rename = false,
+          lsp_doc_border = false,
+        },
+      })
+    end
   },
   {
     "j-hui/fidget.nvim",
@@ -77,5 +99,89 @@ return {
         show_close_icon = false,
       },
     },
+  },
+  {
+    "folke/edgy.nvim",
+    event = "VeryLazy",
+    init = function()
+      vim.opt.laststatus = 3
+      vim.opt.splitkeep = "screen"
+    end,
+    config = function()
+      require("edgy").setup({
+        bottom = {
+          {
+            ft = "toggleterm",
+            size = { height = 0.4 },
+          },
+          {
+            ft = "trouble",
+            size = { height = 0.4 },
+          },
+          {
+            ft = "qf",
+            title = "QuickFix",
+          },
+          {
+            ft = "help",
+            size = { height = 0.4 },
+          },
+        },
+        left = {
+          {
+            ft = "neo-tree",
+            size = { width = 0.2 },
+          },
+        },
+        right = {
+          {
+            ft = "aerial",
+            title = "Symbol Outline",
+            size = { width = 0.2 },
+          },
+        },
+      })
+    end,
+  },
+  {
+    "stevearc/aerial.nvim",
+    config = function()
+      require("aerial").setup({
+        layout = {
+          default_direction = "right",
+          placement = "edge",
+        },
+        attach_mode = "global",
+        backends = { "lsp", "treesitter", "markdown", "man" },
+        show_guides = true,
+      })
+    end,
+  },
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons",
+      "MunifTanjim/nui.nvim",
+    },
+    config = function()
+      require("neo-tree").setup({
+        close_if_last_window = true,
+        enable_git_status = true,
+        enable_diagnostics = true,
+        filesystem = {
+          follow_current_file = true,
+          use_libuv_file_watcher = true,
+        },
+      })
+    end,
+  },
+  {
+    "folke/trouble.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      require("trouble").setup()
+    end,
   },
 }

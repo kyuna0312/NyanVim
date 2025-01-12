@@ -1,31 +1,24 @@
 return {
   {
-    "scottmckendry/cyberdream.nvim",
+    "navarasu/onedark.nvim",
     lazy = false,
     priority = 1000,
-    opts = function(_, opts)
-      opts.transparent = true
-      opts.italic_comments = true
-      opts.borderless_telescope = false
+    config = function()
+      require("onedark").setup({
+        style = "darker",
+        transparent = false,
+        term_colors = true,
+        ending_tildes = false,
+        toggle_style_key = "<leader>ts",
+        code_style = {
+          comments = "italic",
+          keywords = "bold",
+          functions = "none",
+          strings = "none",
+          variables = "none",
+        },
+      })
+      require("onedark").load()
     end,
-  },
-  {
-    "LazyVim/LazyVim",
-    opts = {
-      colorscheme = "cyberdream",
-    },
-  },
-
-  -- modicator (auto color line number based on vim mode)
-  {
-    "mawkler/modicator.nvim",
-    dependencies = "scottmckendry/cyberdream.nvim",
-    init = function()
-      -- These are required for Modicator to work
-      vim.o.cursorline = false
-      vim.o.number = true
-      vim.o.termguicolors = true
-    end,
-    opts = {},
   },
 }

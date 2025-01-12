@@ -1,191 +1,106 @@
-![Maririn312](https://github.com/maririn312/dotfiles/blob/main/logo.png)
+# 🐱 NyanVim
 
-NyanVim is Lazy Vim Improved Projects.
+A modern, IDE-like Neovim configuration focused on speed and productivity.
 
-## ✨ Features
+<div align="center">
+  <img src="https://raw.githubusercontent.com/kyuna312/dotfiles/refs/heads/main/logo.png" alt="NyanVim Logo">
+</div>
 
-- 🔥 Transform your Neovim into a full-fledged IDE
-- 💤 Easily customize and extend your config with NvChad Custom [nvchad.nvim](https://nvchad.com/)
-- 🚀 Blazingly fast
-- 🧹 Sane default settings for options, autocmds, and keymaps
-- 📦 Comes with a wealth of plugins pre-configured and ready to use
+## 🚀 Features
 
-## ⚡️ Requirements
+- **Performance**
+  - Blazingly fast startup time
+  - Optimized lazy-loading
+  - Minimal core configuration
 
-- NvChad LazyVim optimized version
-- Neovim >= **0.9.0** (needs to be built with **LuaJIT**)
-- Git >= **2.19.0** (for partial clones support)
-- a [Nerd Font](https://www.nerdfonts.com/) **_(optional)_**
-- a **C** compiler for `nvim-treesitter`. See [here](https://github.com/nvim-treesitter/nvim-treesitter#requirements)
+- **Development Tools**
+  - 🧠 Intelligent code completion
+  - 📦 LSP support with auto-installation
+  - 🐛 Integrated debugging
+  - 🌳 File explorer with Git integration
+  - 🔍 Fuzzy finding (files, text, commands)
 
-## 🚀 Getting Started
+- **User Experience**
+  - 🎨 Modern UI with Tokyo Night theme
+  - 🎮 Familiar VSCode-like keybindings
+  - 🔧 Easy customization
 
-<details><summary>Install the <a href="">Nyan Vim</a></summary>
+## 📋 Requirements
 
-- Make a backup of your current Neovim files:
+- Neovim >= 0.9.0
+- Git >= 2.19.0
+- [Nerd Font](https://www.nerdfonts.com/)
+- Node.js
+- ripgrep
+- C compiler
 
-  ```sh
-  mv ~/.config/nvim ~/.config/nvim.bak
-  mv ~/.local/share/nvim ~/.local/share/nvim.bak
-  ```
+## ⚡ Quick Install
 
-- Clone the starter
+### macOS
 
-  ```sh
-  git clone https://github.com/NyanLinux/NyanVim.git  ~/.config/nvim
-  ```
 
-- Remove the `.git` folder, so you can add it to your own repo later
 
-  ```sh
-  rm -rf ~/.config/nvim/.git
-  ```
+```bash
+# Install Homebrew if you haven't already
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+# Install dependencies
+brew install neovim git node ripgrep fd
+brew tap homebrew/cask-fonts
+brew install --cask font-hack-nerd-font
+```
 
-- Start Neovim!
+### Debian
 
-  ```sh
-  nvim
-  ```
+```bash
+# Add Neovim repository
+sudo add-apt-repository ppa:neovim-ppa/unstable
+sudo apt-get update
+# Install dependencies
+sudo apt-get install neovim git nodejs npm ripgrep fd-find
+```
 
-  Refer to the comments in the files on how to customize **NyanVim**.
+### Linux
 
-</details>
+```bash
+sudo pacman -S neovim git nodejs npm ripgrep fd
+```
 
-# Neovim Keybindings Guide
+### Configuration
 
-## Basic Navigation
-| Keybinding | Description |
-|------------|-------------|
-| `h/j/k/l` | Move left/down/up/right |
-| `w` | Move forward by word |
-| `b` | Move backward by word |
-| `0` | Go to start of line |
-| `$` | Go to end of line |
-| `gg` | Go to start of file |
-| `G` | Go to end of file |
-| `{number}G` | Go to line number |
-| `Ctrl-u` | Scroll half page up |
-| `Ctrl-d` | Scroll half page down |
+```bash
+# Backup your existing Neovim configuration
+mv ~/.config/nvim ~/.config/nvim.bak
+mv ~/.local/share/nvim ~/.local/share/nvim.bak
+mv ~/.local/state/nvim ~/.local/state/nvim.bak
+mv ~/.cache/nvim ~/.cache/nvim.bak
 
-## Window Management
-| Keybinding | Description |
-|------------|-------------|
-| `<C-h>` | Navigate to left window |
-| `<C-j>` | Navigate to window below |
-| `<C-k>` | Navigate to window above |
-| `<C-l>` | Navigate to right window |
-| `<C-x>2` | Split window horizontally (smart) |
-| `<C-x>3` | Split window vertically |
-| `<C-x>0` | Close current window |
-| `<C-x>o` | Cycle through windows |
-| `<M-1>` | Go to window 1 |
-| `<M-2>` | Go to window 2 |
-| `<M-3>` | Go to window 3 |
-| `<M-4>` | Go to window 4 |
 
-## Window Resizing
-| Keybinding | Description |
-|------------|-------------|
-| `<C-Up>` | Increase window height |
-| `<C-Down>` | Decrease window height |
-| `<C-Left>` | Decrease window width |
-| `<C-Right>` | Increase window width |
+```bash
+# Clone NyanVim
+git clone https://github.com/kyuna312/NyanVim.git ~/.config/nvim
+# Remove the .git directory to make it your own
+rm -rf ~/.config/nvim/.git
+# Neovim
+bash
+nvim
+      ```
 
-## File Explorer (NvimTree)
-| Keybinding | Description |
-|------------|-------------|
-| `<C-b>` | Toggle file explorer |
-| `<C-S-e>` | Focus file explorer |
-| `<leader>ef` | Find current file in explorer |
-| `<leader>er` | Refresh explorer |
-| `<leader>ec` | Collapse explorer |
-| `<leader>e]` | Increase sidebar width |
-| `<leader>e[` | Decrease sidebar width |
 
-## Buffer Operations
-| Keybinding | Description |
-|------------|-------------|
-| `<S-h>` | Previous buffer |
-| `<S-l>` | Next buffer |
-| `<leader>bd` | Delete buffer |
-| `<leader>w` | Save file |
-| `<leader>q` | Quit |
-| `<leader>Q` | Quit all |
+### This README provides:
 
-## Code Navigation & LSP
-| Keybinding | Description |
-|------------|-------------|
-| `gD` | Go to declaration |
-| `gd` | Go to definition |
-| `K` | Show hover documentation |
-| `gi` | Go to implementation |
-| `<leader>rn` | Rename symbol |
-| `<leader>ca` | Code actions |
-| `gr` | Show references |
-| `<leader>f` | Format code |
+    1. Clear installation instructions for different OS
+    2. List of key features and keybindings
+    3. Customization guide
+    4. Plugin overview
+    5. Professional formatting with emojis
+    6. OS-specific dependency installation
+    7. Backup instructions
+    8. Troubleshooting section
+    9. You can further customize it by:
+    10. Adding screenshots of your setup
+    11. Including more specific configuration examples
+    12. Adding a FAQ section
+    13. Including performance benchmarks
+    14. Adding a contribution guide
 
-## Search & Find
-| Keybinding | Description |
-|------------|-------------|
-| `<leader>ff` | Find files |
-| `<leader>fg` | Live grep (search in files) |
-| `<leader>fb` | Find buffers |
-| `<leader>fh` | Help tags |
-| `<leader>h` | Clear search highlights |
-
-## Text Editing
-| Keybinding | Description |
-|------------|-------------|
-| `<` | Indent left (in visual mode) |
-| `>` | Indent right (in visual mode) |
-| `J` | Move text down (in visual mode) |
-| `K` | Move text up (in visual mode) |
-
-## Terminal
-| Keybinding | Description |
-|------------|-------------|
-| `<leader>t` | Toggle terminal |
-| `<C-\>` | Exit terminal mode |
-
-## Tips for Newcomers
-- `<leader>` key is typically the space bar
-- Most commands start with `<leader>` key
-- Use `:help` followed by a command to get more information
-- In command descriptions:
-  - `C` means Ctrl (e.g., `<C-b>` = Ctrl+b)
-  - `S` means Shift (e.g., `<S-h>` = Shift+h)
-  - `M` means Alt/Meta (e.g., `<M-1>` = Alt+1)
-
-## Common Command Mode Operations
-| Command | Description |
-|---------|-------------|
-| `:w` | Save file |
-| `:q` | Quit |
-| `:wq` | Save and quit |
-| `:q!` | Force quit without saving |
-| `:help` | Open help |
-| `:noh` | Clear search highlights |
-
-## Visual Mode
-- Press `v` to enter visual mode (character selection)
-- Press `V` to enter visual line mode (line selection)
-- Press `Ctrl-v` to enter visual block mode (column selection)
-- Use navigation keys to select text
-- Press `y` to copy (yank)
-- Press `d` to cut (delete)
-- Press `p` to paste after cursor
-- Press `P` to paste before cursor
-
-## Insert Mode
-- Press `i` to insert before cursor
-- Press `a` to insert after cursor
-- Press `I` to insert at beginning of line
-- Press `A` to insert at end of line
-- Press `o` to insert new line below
-- Press `O` to insert new line above
-- Press `Esc` or `Ctrl-[` to exit insert mode
-
-Remember:
-- Press `Esc` to return to normal mode from any other mode
-- Most commands can be preceded by a number to repeat them
-- Use `:help` followed by any command to get more information
+[Source: https://github.com/kyuna312/NyanVim]

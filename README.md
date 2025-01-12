@@ -73,6 +73,7 @@ mv ~/.config/nvim ~/.config/nvim.bak
 mv ~/.local/share/nvim ~/.local/share/nvim.bak
 mv ~/.local/state/nvim ~/.local/state/nvim.bak
 mv ~/.cache/nvim ~/.cache/nvim.bak
+```
 
 
 ```bash
@@ -80,10 +81,7 @@ mv ~/.cache/nvim ~/.cache/nvim.bak
 git clone https://github.com/kyuna312/NyanVim.git ~/.config/nvim
 # Remove the .git directory to make it your own
 rm -rf ~/.config/nvim/.git
-# Neovim
-bash
-nvim
-      ```
+```
 
 
 ### This README provides:

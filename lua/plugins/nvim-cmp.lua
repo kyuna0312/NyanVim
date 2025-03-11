@@ -4,32 +4,34 @@ return {
     opts = function(_, opts)
       opts.completion.autocomplete = false
       opts.mapping["<CR>"] = nil
+      local border_chars = {
+        { "󱐋", "WarningMsg" },
+        { "─", "Comment" },
+        { "╮", "Comment" },
+        { "│", "Comment" },
+        { "╯", "Comment" },
+        { "─", "Comment" },
+        { "╰", "Comment" },
+        { "│", "Comment" },
+      }
+      local documentation_border_chars = {
+        { "󰙎", "DiagnosticHint" },
+        { "─", "Comment" },
+        { "╮", "Comment" },
+        { "│", "Comment" },
+        { "╯", "Comment" },
+        { "─", "Comment" },
+        { "╰", "Comment" },
+        { "│", "Comment" },
+      }
       opts.window = {
         completion = {
-          border = {
-            { "󱐋", "WarningMsg" },
-            { "─", "Comment" },
-            { "╮", "Comment" },
-            { "│", "Comment" },
-            { "╯", "Comment" },
-            { "─", "Comment" },
-            { "╰", "Comment" },
-            { "│", "Comment" },
-          },
+          border = border_chars,
           scrollbar = false,
           winblend = 0,
         },
         documentation = {
-          border = {
-            { "󰙎", "DiagnosticHint" },
-            { "─", "Comment" },
-            { "╮", "Comment" },
-            { "│", "Comment" },
-            { "╯", "Comment" },
-            { "─", "Comment" },
-            { "╰", "Comment" },
-            { "│", "Comment" },
-          },
+          border = documentation_border_chars,
           scrollbar = false,
           winblend = 0,
         },

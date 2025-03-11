@@ -60,7 +60,6 @@ return {
       end,
     },
   },
-  -- filename
   {
     "b0o/incline.nvim",
     event = "BufReadPre",
@@ -88,8 +87,6 @@ return {
       })
     end,
   },
-
-  -- bufferline
   {
     "akinsho/bufferline.nvim",
     opts = {

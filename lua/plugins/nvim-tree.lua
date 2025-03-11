@@ -9,17 +9,11 @@ return {
     { "<leader>e", "<cmd>NvimTreeFocus<cr>", desc = "Focus file explorer" },
   },
   init = function()
-    -- Ensure first open is on the right side
     vim.g.nvim_tree_side = 'right'
   end,
   opts = {
     on_attach = function(bufnr)
       local api = require("nvim-tree.api")
-
-      local function opts(desc)
-        return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
-      end
-
       api.config.mappings.default_on_attach(bufnr)
     end,
     sync_root_with_cwd = true,
@@ -30,7 +24,7 @@ return {
     },
     view = {
       width = 35,
-      side = "right", -- Set default side to right
+      side = "right",
       preserve_window_proportions = true,
       number = false,
       relativenumber = false,
@@ -58,66 +52,51 @@ return {
     actions = {
       open_file = {
         window_picker = {
-          enable = false, -- Disable window picker for more predictable behavior
+          enable = false,
         },
         resize_window = true,
       },
     },
   },
   config = function(_, opts)
-    -- Configure NvimTree
-    require("nvim-tree").setup(opts)
-
-    -- Create autocmd group for NvimTree
-    local group = vim.api.nvim_create_augroup("NvimTreeGroup", { clear = true })
-
-    -- Ensure tree opens on the right side
-    vim.api.nvim_create_autocmd("FileType", {
-      group = group,
-      pattern = "NvimTree",
-      callback = function()
-        -- Force window to right side
-        vim.cmd("wincmd L")
-        -- Set width
-        vim.cmd("vertical resize 35")
-      end,
-    })
-
-    -- Keep tree on the right when window is resized
-    vim.api.nvim_create_autocmd("VimResized", {
-      group = group,
-      callback = function()
-        local view = require("nvim-tree.view")
-        if view.is_visible() then
-          vim.cmd("wincmd L")
-          vim.cmd("vertical resize 35")
-        end
-      end,
-    })
-
-    -- Override the default toggle function
     local api = require("nvim-tree.api")
     local view = require("nvim-tree.view")
 
-    local toggle_tree = api.tree.toggle
-    api.tree.toggle = function(...)
-      toggle_tree(...)
+    require("nvim-tree").setup(opts)
+
+    local group = vim.api.nvim_create_augroup("NvimTreeGroup", { clear = true })
+
+    local function resize_tree()
       if view.is_visible() then
         vim.cmd("wincmd L")
         vim.cmd("vertical resize 35")
       end
     end
 
-    -- Open tree when vim starts with a directory
+    vim.api.nvim_create_autocmd("FileType", {
+      group = group,
+      pattern = "NvimTree",
+      callback = resize_tree,
+    })
+
+    vim.api.nvim_create_autocmd("VimResized", {
+      group = group,
+      callback = resize_tree,
+    })
+
+    local toggle_tree = api.tree.toggle
+    api.tree.toggle = function(...)
+      toggle_tree(...)
+      resize_tree()
+    end
+
     vim.api.nvim_create_autocmd("VimEnter", {
       group = group,
       callback = function(data)
-        local directory = vim.fn.isdirectory(data.file) == 1
-        if directory then
+        if vim.fn.isdirectory(data.file) == 1 then
           vim.cmd.cd(data.file)
-          require("nvim-tree.api").tree.open()
-          vim.cmd("wincmd L")
-          vim.cmd("vertical resize 35")
+          api.tree.open()
+          resize_tree()
         end
       end,
     })

@@ -16,9 +16,7 @@ wk.setup({
   show_help = true,
 })
 
--- Spacemacs-like bindings
 wk.register({
-  -- File operations (SPC f)
   f = {
     name = "File",
     f = { "<cmd>Telescope find_files<cr>", "Find File" },
@@ -27,8 +25,6 @@ wk.register({
     t = { "<cmd>NvimTreeToggle<cr>", "Toggle Tree" },
     y = { "<cmd>lua require('telescope').extensions.neoclip.default()<cr>", "Yank History" },
   },
-
-  -- Buffer operations (SPC b)
   b = {
     name = "Buffer",
     b = { "<cmd>Telescope buffers<cr>", "Switch Buffer" },
@@ -37,8 +33,6 @@ wk.register({
     p = { "<cmd>bprevious<cr>", "Previous Buffer" },
     r = { "<cmd>e!<cr>", "Reload Buffer" },
   },
-
-  -- Window operations (SPC w)
   w = {
     name = "Window",
     h = { "<C-w>h", "Left Window" },
@@ -49,8 +43,6 @@ wk.register({
     s = { "<cmd>split<cr>", "Horizontal Split" },
     d = { "<cmd>close<cr>", "Delete Window" },
   },
-
-  -- Search/Symbol operations (SPC s)
   s = {
     name = "Search",
     p = { "<cmd>Telescope live_grep<cr>", "Search Project" },
@@ -58,16 +50,12 @@ wk.register({
     s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
     S = { "<cmd>Telescope lsp_workspace_symbols<cr>", "Workspace Symbols" },
   },
-
-  -- Project operations (SPC p)
   p = {
     name = "Project",
     f = { "<cmd>Telescope git_files<cr>", "Find File" },
     p = { "<cmd>Telescope projects<cr>", "Switch Project" },
     t = { "<cmd>TodoTelescope<cr>", "Todo List" },
   },
-
-  -- Git operations (SPC g)
   g = {
     name = "Git",
     s = { "<cmd>Telescope git_status<cr>", "Status" },
@@ -76,8 +64,6 @@ wk.register({
     d = { "<cmd>DiffviewOpen<cr>", "Diff View" },
     g = { "<cmd>LazyGit<cr>", "LazyGit" },
   },
-
-  -- LSP operations (SPC l)
   l = {
     name = "LSP",
     d = { vim.lsp.buf.definition, "Go to Definition" },
@@ -89,8 +75,6 @@ wk.register({
     f = { vim.lsp.buf.format, "Format" },
     h = { vim.lsp.buf.hover, "Hover" },
   },
-
-  -- Toggle operations (SPC t)
   t = {
     name = "Toggle",
     t = { "<cmd>ToggleTerm<cr>", "Terminal" },
@@ -99,24 +83,18 @@ wk.register({
     w = { "<cmd>set wrap!<cr>", "Word Wrap" },
     s = { "<cmd>set spell!<cr>", "Spell Check" },
   },
-
-  -- Help (SPC h)
   h = {
     name = "Help",
     t = { "<cmd>Telescope help_tags<cr>", "Help Tags" },
     k = { "<cmd>Telescope keymaps<cr>", "Key Mappings" },
     c = { "<cmd>Telescope commands<cr>", "Commands" },
   },
-
-  -- Quit operations (SPC q)
   q = {
     name = "Quit",
     q = { "<cmd>quit<cr>", "Quit" },
     w = { "<cmd>wq<cr>", "Save & Quit" },
     a = { "<cmd>qall<cr>", "Quit All" },
   },
-
-  -- Code operations (SPC c)
   c = {
     name = "Code",
     a = { vim.lsp.buf.code_action, "Code Actions" },
@@ -127,8 +105,6 @@ wk.register({
     s = { "<cmd>AerialToggle<cr>", "Toggle Symbol Outline" },
     x = { "<cmd>TroubleToggle<cr>", "Toggle Trouble" },
   },
-
-  -- Debug operations (SPC d)
   d = {
     name = "Debug",
     b = { "<cmd>DapToggleBreakpoint<cr>", "Toggle Breakpoint" },
@@ -139,8 +115,6 @@ wk.register({
     t = { "<cmd>DapTerminate<cr>", "Terminate" },
     u = { "<cmd>DapUiToggle<cr>", "Toggle Debug UI" },
   },
-
-  -- View operations (SPC v)
   v = {
     name = "View",
     e = { "<cmd>Neotree toggle<cr>", "Toggle Explorer" },

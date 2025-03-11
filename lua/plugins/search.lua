@@ -18,39 +18,30 @@ return {
     },
     cmd = "Telescope",
     keys = {
-      -- Quick Find
       { "<C-p>", "<cmd>Telescope find_files<cr>", desc = "Find files" },
       { "<C-S-f>", "<cmd>Telescope live_grep<cr>", desc = "Live grep" },
       { "<C-e>", "<cmd>Telescope frecency<cr>", desc = "Recent files" },
-
-      -- Find
       { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find files" },
       { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent files" },
       { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
       { "<leader>fg", "<cmd>Telescope git_files<cr>", desc = "Git files" },
       { "<leader>fs", "<cmd>Telescope git_status<cr>", desc = "Git status" },
-
-      -- Search
       { "<leader>sw", "<cmd>Telescope grep_string word_match=-w<cr>", desc = "Search word" },
       { "<leader>sW", "<cmd>Telescope grep_string<cr>", desc = "Search wide" },
       { "<leader>sp", "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<cr>", desc = "Search project" },
       { "<leader>ss", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Search in file" },
       { "<leader>sS", "<cmd>Telescope lsp_document_symbols<cr>", desc = "Search symbols" },
-
-      -- Git
       { "<leader>gc", "<cmd>Telescope git_commits<cr>", desc = "Git commits" },
       { "<leader>gC", "<cmd>Telescope git_bcommits<cr>", desc = "Git buffer commits" },
       { "<leader>gb", "<cmd>Telescope git_branches<cr>", desc = "Git branches" },
       { "<leader>gs", "<cmd>Telescope git_status<cr>", desc = "Git status" },
-
-      -- Search in all files
       { "<leader>sa", function()
-        require("telescope.builtin").find_files({
-          hidden = true,
-          no_ignore = true,
-          search_file = vim.fn.expand("<cword>"),
-        })
-      end, desc = "Search all files" },
+          require("telescope.builtin").find_files({
+            hidden = true,
+            no_ignore = true,
+            search_file = vim.fn.expand("<cword>"),
+          })
+        end, desc = "Search all files" },
     },
     config = function()
       local telescope = require("telescope")
@@ -106,7 +97,7 @@ return {
               ["<C-d>"] = actions.preview_scrolling_down,
               ["<C-f>"] = actions.to_fuzzy_refine,
               ["<C-h>"] = "which_key",
-              ["<C-w>"] = { "<c-s-w>", type = "command" }, -- type in cword
+              ["<C-w>"] = { "<c-s-w>", type = "command" },
               ["<C-space>"] = actions.toggle_selection,
               ["<Tab>"] = actions.toggle_selection + actions.move_selection_next,
               ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_previous,

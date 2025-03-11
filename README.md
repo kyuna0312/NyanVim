@@ -38,8 +38,6 @@ A modern, IDE-like Neovim configuration focused on speed and productivity.
 
 ### macOS
 
-
-
 ```bash
 # Install Homebrew if you haven't already
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -75,30 +73,11 @@ mv ~/.local/state/nvim ~/.local/state/nvim.bak
 mv ~/.cache/nvim ~/.cache/nvim.bak
 ```
 
-
 ```bash
 # Clone NyanVim
 git clone https://github.com/kyuna312/NyanVim.git ~/.config/nvim
 # Remove the .git directory to make it your own
 rm -rf ~/.config/nvim/.git
 ```
-
-
-### This README provides:
-
-    1. Clear installation instructions for different OS
-    2. List of key features and keybindings
-    3. Customization guide
-    4. Plugin overview
-    5. Professional formatting with emojis
-    6. OS-specific dependency installation
-    7. Backup instructions
-    8. Troubleshooting section
-    9. You can further customize it by:
-    10. Adding screenshots of your setup
-    11. Including more specific configuration examples
-    12. Adding a FAQ section
-    13. Including performance benchmarks
-    14. Adding a contribution guide
 
 [Source: https://github.com/kyuna312/NyanVim]

@@ -4,6 +4,10 @@ vim.g.maplocalleader = " "
 
 -- Load core configuration
 require("config.options")
-require("config.lazy") -- Load lazy.nvim and plugins
-require("config.keymaps")
-require("config.autocmds")
+
+-- Lazy-load plugins and configurations
+vim.defer_fn(function()
+  require("config.lazy") -- Load lazy.nvim and plugins
+  require("config.keymaps")
+  require("config.autocmds")
+end, 0)

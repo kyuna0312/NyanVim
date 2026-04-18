@@ -255,3 +255,9 @@ vim.keymap.set("n", "<C-S-s>", "<cmd>Telescope lsp_document_symbols<cr>", { desc
 
 -- File structure (like PyCharm's Ctrl+F12)
 vim.keymap.set("n", "<C-F12>", "<cmd>Telescope lsp_document_symbols<cr>", { desc = "File structure" })
+
+-- Load user custom keymaps if present
+local custom_keymaps = vim.fn.stdpath("config") .. "/lua/custom/keymaps.lua"
+if vim.loop.fs_stat(custom_keymaps) then
+  dofile(custom_keymaps)
+end

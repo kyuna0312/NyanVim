@@ -12,8 +12,26 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- Collect user custom plugins from lua/custom/plugins/
+local custom_plugins = {}
+local custom_dir = vim.fn.stdpath("config") .. "/lua/custom/plugins"
+if vim.loop.fs_stat(custom_dir) then
+  local handle = vim.loop.fs_scandir(custom_dir)
+  while handle do
+    local name, ftype = vim.loop.fs_scandir_next(handle)
+    if not name then break end
+    if ftype == "file" and name:match("%.lua$") then
+      local mod = "custom.plugins." .. name:gsub("%.lua$", "")
+      local ok, spec = pcall(require, mod)
+      if ok and type(spec) == "table" then
+        vim.list_extend(custom_plugins, vim.islist(spec) and spec or { spec })
+      end
+    end
+  end
+end
+
 -- Plugin specifications
-require("lazy").setup({
+require("lazy").setup(vim.list_extend({
   -- UI Improvements
   {
     "nvim-tree/nvim-tree.lua",
@@ -336,4 +354,4 @@ require("lazy").setup({
       require("neoclip").setup()
     end,
   },
-})
+}, custom_plugins))

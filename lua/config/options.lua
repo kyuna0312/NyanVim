@@ -1,5 +1,11 @@
 local opt = vim.opt
 
+-- Ensure Go binaries are available to Mason/LSP
+local gobin = vim.fn.expand("$HOME/go/bin")
+if not vim.env.PATH:find(gobin, 1, true) then
+  vim.env.PATH = gobin .. ":" .. vim.env.PATH
+end
+
 -- UI
 opt.number = true
 opt.relativenumber = true

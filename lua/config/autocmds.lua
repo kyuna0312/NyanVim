@@ -51,12 +51,7 @@ autocmd("BufWritePre", {
 
 local lsp = augroup("LSP", { clear = true })
 
-autocmd("BufWritePre", {
-  group = lsp,
-  callback = function()
-    vim.lsp.buf.format({ async = false })
-  end,
-})
+-- Format on save handled by conform.nvim (lua/plugins/conform.lua)
 
 autocmd("CursorHold", {
   group = lsp,

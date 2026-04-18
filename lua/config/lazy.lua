@@ -91,7 +91,7 @@ require("lazy").setup(vim.list_extend({
     'nvim-telescope/telescope.nvim',
     dependencies = {
       'nvim-lua/plenary.nvim',
-      'nvim-telescope/telescope-fzf-native.nvim',
+      { 'nvim-telescope/telescope-fzf-native.nvim', build = "make" },
       'nvim-telescope/telescope-ui-select.nvim',
     },
     config = function()
@@ -102,8 +102,8 @@ require("lazy").setup(vim.list_extend({
           },
         },
       })
-      require("telescope").load_extension("fzf")
-      require("telescope").load_extension("ui-select")
+      pcall(require("telescope").load_extension, "fzf")
+      pcall(require("telescope").load_extension, "ui-select")
     end
   },
 
@@ -128,7 +128,7 @@ require("lazy").setup(vim.list_extend({
         ensure_installed = {
           "lua_ls",
           "pyright",
-          "tsserver",
+          "ts_ls",
           "rust_analyzer",
           "gopls",
           "jsonls",
@@ -143,7 +143,7 @@ require("lazy").setup(vim.list_extend({
       -- Enhanced LSP configuration
       local lspconfig = require('lspconfig')
       local servers = {
-        'lua_ls', 'pyright', 'tsserver', 'rust_analyzer',
+        'lua_ls', 'pyright', 'ts_ls', 'rust_analyzer',
         'gopls', 'jsonls', 'html', 'cssls'
       }
 
@@ -239,42 +239,7 @@ require("lazy").setup(vim.list_extend({
     end
   },
 
-  -- Enhanced syntax highlighting
-  {
-    "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter-textobjects",
-      "windwp/nvim-ts-autotag",
-    },
-    config = function()
-      require("nvim-treesitter.configs").setup({
-        ensure_installed = {
-          "lua", "vim", "vimdoc", "query",
-          "python", "typescript", "javascript", "tsx",
-          "go", "rust", "java", "c", "cpp",
-          "json", "yaml", "toml", "markdown", "markdown_inline",
-          "html", "css", "bash", "dockerfile",
-        },
-        auto_install = false,
-        highlight = { enable = true },
-        indent = { enable = true },
-        autotag = { enable = true },
-        textobjects = {
-          select = {
-            enable = true,
-            lookahead = true,
-            keymaps = {
-              ["af"] = "@function.outer",
-              ["if"] = "@function.inner",
-              ["ac"] = "@class.outer",
-              ["ic"] = "@class.inner",
-            },
-          },
-        },
-      })
-    end
-  },
+  -- Treesitter: configured in lua/plugins/treesitter.lua
 
   -- Smart auto pairs
   {
@@ -310,29 +275,16 @@ require("lazy").setup(vim.list_extend({
   { "numToStr/Comment.nvim", config = true }, -- Easy commenting
   { "folke/todo-comments.nvim", dependencies = "nvim-lua/plenary.nvim", config = true }, -- TODO comments
 
-  -- Add these to your existing plugins
+  -- Telescope extensions (merged with main spec above by lazy.nvim)
   {
     "nvim-telescope/telescope.nvim",
     dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope-fzf-native.nvim",
       "AckslD/nvim-neoclip.lua",
       "nvim-telescope/telescope-project.nvim",
     },
     config = function()
-      require("telescope").setup({
-        extensions = {
-          fzf = {
-            fuzzy = true,
-            override_generic_sorter = true,
-            override_file_sorter = true,
-            case_mode = "smart_case",
-          },
-        },
-      })
-      require("telescope").load_extension("fzf")
-      require("telescope").load_extension("projects")
-      require("telescope").load_extension("neoclip")
+      pcall(require("telescope").load_extension, "projects")
+      pcall(require("telescope").load_extension, "neoclip")
     end,
   },
   {

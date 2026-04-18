@@ -1,83 +1,98 @@
 # 🐱 NyanVim
 
-A modern, IDE-like Neovim configuration focused on speed and productivity.
+A modern Neovim distribution built on [LazyVim](https://www.lazyvim.org/) — IDE features, fast startup, VSCode-like feel.
 
 <div align="center">
   <img src="https://raw.githubusercontent.com/kyuna312/dotfiles/refs/heads/main/logo.png" alt="NyanVim Logo">
 </div>
 
-## 🚀 Features
+## Requirements
 
-- **Performance**
-  - Blazingly fast startup time
-  - Optimized lazy-loading
-  - Minimal core configuration
+| Dependency | Version | Notes |
+|-----------|---------|-------|
+| Neovim | >= 0.9.0 | [Install](https://neovim.io) |
+| Git | >= 2.19 | |
+| Node.js | any LTS | for LSP servers |
+| ripgrep | any | `rg` — Telescope grep |
+| fd | any | `fd` — Telescope find |
+| C compiler | any | `gcc`/`clang` — Treesitter |
+| Nerd Font | any | [nerdfonts.com](https://www.nerdfonts.com/) |
 
-- **Development Tools**
-  - 🧠 Intelligent code completion
-  - 📦 LSP support with auto-installation
-  - 🐛 Integrated debugging
-  - 🌳 File explorer with Git integration
-  - 🔍 Fuzzy finding (files, text, commands)
-
-- **User Experience**
-  - 🎨 Modern UI with Tokyo Night theme
-  - 🎮 Familiar VSCode-like keybindings
-  - 🔧 Easy customization
-
-## 📋 Requirements
-
-- Neovim >= 0.9.0
-- Git >= 2.19.0
-- [Nerd Font](https://www.nerdfonts.com/)
-- Node.js
-- ripgrep
-- C compiler
-
-## ⚡ Quick Install
-
-### macOS
+## Install
 
 ```bash
-# Install Homebrew if you haven't already
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-# Install dependencies
-brew install neovim git node ripgrep fd
-brew tap homebrew/cask-fonts
-brew install --cask font-hack-nerd-font
+curl -fsSL https://raw.githubusercontent.com/kyuna312/NyanVim/main/install.sh | bash
 ```
 
-### Debian
+Or manually:
 
 ```bash
-# Add Neovim repository
-sudo add-apt-repository ppa:neovim-ppa/unstable
-sudo apt-get update
-# Install dependencies
-sudo apt-get install neovim git nodejs npm ripgrep fd-find
-```
-
-### Linux
-
-```bash
-sudo pacman -S neovim git nodejs npm ripgrep fd
-```
-
-### Configuration
-
-```bash
-# Backup your existing Neovim configuration
+# Back up existing config
 mv ~/.config/nvim ~/.config/nvim.bak
-mv ~/.local/share/nvim ~/.local/share/nvim.bak
-mv ~/.local/state/nvim ~/.local/state/nvim.bak
-mv ~/.cache/nvim ~/.cache/nvim.bak
+
+# Clone
+git clone https://github.com/kyuna312/NyanVim.git ~/.config/nvim
+
+# Start Neovim — plugins install automatically on first launch
+nvim
 ```
+
+After install, run `:checkhealth nyanvim` to verify your system is set up correctly.
+
+## Key Keymaps
+
+Leader key: **`<Space>`**
+
+### Navigation
+| Key | Action |
+|-----|--------|
+| `<Space>ff` / `<C-p>` | Find files |
+| `<Space>fg` | Live grep |
+| `<Space>fb` | Open buffers |
+| `<Space>fr` | Recent files |
+| `<C-b>` | Toggle file explorer |
+| `<S-h>` / `<S-l>` | Prev / Next buffer |
+| `<C-h/j/k/l>` | Navigate windows |
+
+### LSP
+| Key | Action |
+|-----|--------|
+| `gd` | Go to definition |
+| `gr` | References |
+| `K` | Hover docs |
+| `<Space>rn` | Rename symbol |
+| `<Space>ca` | Code actions |
+| `<Space>f` | Format buffer |
+
+### Tools
+| Key | Action |
+|-----|--------|
+| `<Space>t` | Toggle terminal |
+| `<Space>cm` | Mason (LSP installer) |
+| `<Space>tc` | Toggle Copilot |
+| `<M-\>` | Copilot panel (insert) |
+| `<M-]>` | Accept Copilot suggestion |
+
+## Customize Without Forking
+
+Add your own plugins, keymaps, and options to `~/.config/nvim/lua/custom/` — this directory is gitignored so `git pull` updates never overwrite your changes.
+
+See `lua/custom/README.md` for examples.
+
+## Update
 
 ```bash
-# Clone NyanVim
-git clone https://github.com/kyuna312/NyanVim.git ~/.config/nvim
-# Remove the .git directory to make it your own
-rm -rf ~/.config/nvim/.git
+cd ~/.config/nvim
+git pull
+nvim --headless "+Lazy! sync" +qa
 ```
 
-[Source: https://github.com/kyuna312/NyanVim]
+## Languages Included
+
+Go · TypeScript · Python · Rust · Lua · JSON · YAML · Markdown · SQL · Terraform · Docker · Java · C/C++ · Tailwind CSS · HTML/CSS
+
+## Troubleshoot
+
+```
+:checkhealth nyanvim
+```

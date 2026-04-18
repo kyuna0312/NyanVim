@@ -1,0 +1,61 @@
+name: Benchmark
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  bench:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install Neovim stable
+        run: |
+          curl -LO https://github.com/neovim/neovim/releases/download/stable/nvim-linux-x86_64.tar.gz
+          tar xzf nvim-linux-x86_64.tar.gz
+          echo "$GITHUB_WORKSPACE/nvim-linux-x86_64/bin" >> "$GITHUB_PATH"
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y ripgrep fd-find nodejs
+          mkdir -p "$HOME/.local/bin"
+          ln -s "$(which fdfind)" "$HOME/.local/bin/fd"
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+
+      - name: Link repo as nvim config
+        run: |
+          mkdir -p "$HOME/.config"
+          ln -s "$GITHUB_WORKSPACE" "$HOME/.config/nvim"
+
+      - name: Install plugins headlessly
+        run: |
+          nvim --headless "+Lazy! sync" +qa 2>&1 | tail -5
+        timeout-minutes: 10
+
+      - name: Run benchmark
+        id: bench
+        run: |
+          chmod +x bench.sh
+          ./bench.sh --runs 10 --version "${{ github.ref_name }}" || true
+          result=$(ls -1t docs/perf/*.md | head -1)
+          echo "result_file=$result" >> "$GITHUB_OUTPUT"
+
+      - name: Commit results to main
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/perf/
+          git diff --staged --quiet \
+            || git commit -m "perf: benchmark results for ${{ github.ref_name }}"
+          git push origin main

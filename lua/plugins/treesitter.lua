@@ -9,11 +9,6 @@ return {
     "nvim-treesitter/nvim-treesitter-context",
   },
   config = function()
-    -- Fix permissions for the parser directory
-    local parser_path = vim.fn.stdpath("data") .. "/tree-sitter"
-    vim.fn.mkdir(parser_path, "p")
-    vim.fn.system({"chmod", "755", parser_path})
-
     require("nvim-treesitter.install").prefer_git = true
 
     require("nvim-treesitter.configs").setup({

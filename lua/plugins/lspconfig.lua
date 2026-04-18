@@ -20,7 +20,7 @@ return {
 
     -- Setup LSP servers with specific configurations
     local servers = {
-      tsserver = {
+      ts_ls = {
         cmd = { "typescript-language-server", "--stdio" },
         filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
         root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git"),

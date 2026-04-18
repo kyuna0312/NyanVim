@@ -24,6 +24,11 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
+if ! [[ "$RUNS" =~ ^[0-9]+$ ]] || [[ "$RUNS" -lt 1 ]]; then
+  echo "error: --runs must be a positive integer" >&2
+  exit 1
+fi
+
 OUT_FILE="${OUT_DIR}/${DATE}-${VERSION}.md"
 mkdir -p "$OUT_DIR"
 

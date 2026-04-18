@@ -6,6 +6,22 @@ A modern Neovim distribution built on [LazyVim](https://www.lazyvim.org/) — ID
   <img src="https://raw.githubusercontent.com/kyuna312/dotfiles/refs/heads/main/logo.png" alt="NyanVim Logo">
 </div>
 
+<div align="center">
+
+![Dashboard](assets/screenshots/dashboard.png)
+
+</div>
+
+## Showcase
+
+| IDE View | Fuzzy Finder |
+|----------|-------------|
+| ![IDE View](assets/screenshots/ide-view.png) | ![Telescope](assets/screenshots/telescope.png) |
+
+| LSP Hover | Terminal |
+|-----------|----------|
+| ![LSP](assets/screenshots/lsp.png) | ![Terminal](assets/screenshots/terminal.png) |
+
 ## Requirements
 
 | Dependency | Version | Notes |

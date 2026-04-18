@@ -26,12 +26,12 @@ local function check_executables()
   health.start("External Dependencies")
   for _, dep in ipairs(required_executables) do
     if nyanvim.has_executable(dep.name) then
-      health.ok(dep.name .. " — " .. dep.reason)
+      health.ok(dep.name .. " - " .. dep.reason)
     elseif dep.optional then
-      health.warn(dep.name .. " not found — " .. dep.reason)
+      health.warn(dep.name .. " not found - " .. dep.reason)
     else
       health.error(
-        dep.name .. " not found — required for: " .. dep.reason,
+        dep.name .. " not found - required for: " .. dep.reason,
         { "Install via your package manager (brew/apt/pacman)" }
       )
     end
@@ -60,7 +60,9 @@ end
 local function check_nerd_font()
   health.start("Nerd Font")
   health.warn(
-    "Cannot auto-detect Nerd Font. If icons look broken, install one from https://www.nerdfonts.com/ and set it in your terminal."
+    "Cannot auto-detect Nerd Font. "
+      .. "If icons look broken, install one from https://www.nerdfonts.com/ "
+      .. "and set it in your terminal."
   )
 end
 

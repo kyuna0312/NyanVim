@@ -31,9 +31,12 @@ check_nvim_version() {
   local version_output
   version_output=$(nvim --version 2>&1 | head -1)
   local major minor
-  major=$(echo "$version_output" | grep -oP 'v\K[0-9]+(?=\.[0-9]+\.[0-9]+)')
-  minor=$(echo "$version_output" | grep -oP 'v[0-9]+\.\K[0-9]+(?=\.[0-9]+)')
-  if [[ "$major" -lt 0 ]] || [[ "$major" -eq 0 && "$minor" -lt 9 ]]; then
+  major=$(echo "$version_output" | grep -oE 'v[0-9]+\.[0-9]+\.[0-9]+' | cut -d'.' -f1 | tr -d 'v')
+  minor=$(echo "$version_output" | grep -oE 'v[0-9]+\.[0-9]+\.[0-9]+' | cut -d'.' -f2)
+  if [[ -z "$major" || -z "$minor" ]]; then
+    error "Could not parse Neovim version from: $version_output"
+  fi
+  if [[ "$major" -eq 0 && "$minor" -lt 9 ]]; then
     error "Neovim >= 0.9.0 required. Found: $version_output"
   fi
   success "Neovim $version_output"

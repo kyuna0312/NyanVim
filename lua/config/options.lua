@@ -132,3 +132,9 @@ vim.api.nvim_set_hl(0, "CopilotSelection", { fg = "#83a598", bold = true })
 
 -- More responsive suggestions
 vim.g.copilot_idle_delay = 75  -- Faster suggestions (like PyCharm)
+
+-- Load user custom options if present
+local custom_options = vim.fn.stdpath("config") .. "/lua/custom/options.lua"
+if vim.loop.fs_stat(custom_options) then
+  dofile(custom_options)
+end

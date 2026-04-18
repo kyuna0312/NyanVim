@@ -249,7 +249,14 @@ require("lazy").setup(vim.list_extend({
     },
     config = function()
       require("nvim-treesitter.configs").setup({
-        ensure_installed = "all",
+        ensure_installed = {
+          "lua", "vim", "vimdoc", "query",
+          "python", "typescript", "javascript", "tsx",
+          "go", "rust", "java", "c", "cpp",
+          "json", "yaml", "toml", "markdown", "markdown_inline",
+          "html", "css", "bash", "dockerfile",
+        },
+        auto_install = false,
         highlight = { enable = true },
         indent = { enable = true },
         autotag = { enable = true },

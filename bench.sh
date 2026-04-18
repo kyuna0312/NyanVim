@@ -10,6 +10,11 @@ REPO_ROOT=$(git rev-parse --show-toplevel)
 OUT_DIR="${REPO_ROOT}/docs/perf"
 DATE=$(date +%Y-%m-%d)
 
+if ! command -v nvim &>/dev/null; then
+  echo "error: nvim not found in PATH" >&2
+  exit 1
+fi
+
 while [[ $# -gt 0 ]]; do
   case $1 in
     --runs)      RUNS="$2";      shift 2 ;;
@@ -29,12 +34,20 @@ for i in $(seq 1 "$RUNS"); do
   TMP=$(mktemp)
   nvim --startuptime "$TMP" --headless -c "qa" 2>/dev/null
   t=$(grep "NVIM STARTED" "$TMP" | awk '{print $1}')
-  times+=("$t")
   rm -f "$TMP"
+  if [[ -z "$t" ]]; then
+    echo "error: failed to parse startup time on run $i" >&2
+    exit 1
+  fi
+  times+=("$t")
 done
 echo ""
 
 # Compute mean, median, min, max via sort + awk
+if [[ "${#times[@]}" -eq 0 ]]; then
+  echo "error: no timing results collected" >&2
+  exit 1
+fi
 read -r MEAN MEDIAN MIN MAX < <(
   printf '%s\n' "${times[@]}" | sort -n | awk -v n="${#times[@]}" '
   { a[NR] = $1; sum += $1 }
@@ -54,9 +67,9 @@ REGRESSION_MSG=""
 prev_file=$(ls -1t "${OUT_DIR}"/*.md 2>/dev/null | grep -v "${OUT_FILE}" | head -1 || true)
 if [[ -n "$prev_file" ]]; then
   PREV_MEAN=$(grep "^<!-- nyanvim-perf:" "$prev_file" \
-    | grep -oP 'mean=\K[0-9.]+' || true)
+    | sed 's/.*mean=\([0-9.]*\).*/\1/' || true)
   PREV_VERSION=$(grep "^<!-- nyanvim-perf:" "$prev_file" \
-    | grep -oP 'version=\K\S+' || true)
+    | sed 's/.*version=\([^ ]*\).*/\1/' || true)
 fi
 
 if [[ -n "$PREV_MEAN" ]]; then

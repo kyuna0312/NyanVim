@@ -1,5 +1,6 @@
 plugin
 custom
+!lua/custom/README.md
 spell
 ftplugin
 syntax

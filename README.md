@@ -96,3 +96,16 @@ Go · TypeScript · Python · Rust · Lua · JSON · YAML · Markdown · SQL · 
 ```
 :checkhealth nyanvim
 ```
+
+## Performance
+
+Startup time is benchmarked on every release using `nvim --startuptime`.
+
+Results live in [`docs/perf/`](docs/perf/) — one file per release, with mean/median/min/max and a comparison against the previous release.
+
+**Run locally:**
+```bash
+./bench.sh --runs 10
+```
+
+Results are saved to `docs/perf/YYYY-MM-DD-VERSION.md`.

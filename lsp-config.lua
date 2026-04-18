@@ -1,3 +1,0 @@
-require'lspconfig'.ts_ls.setup{
-    // ...existing configuration...
-}

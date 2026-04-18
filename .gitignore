@@ -8,3 +8,6 @@ coc-settings.json
 .luarc.json
 after
 **/.DS_Store
+.remember/
+docs/superpowers/
+CLAUDE.md

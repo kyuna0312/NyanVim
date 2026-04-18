@@ -183,8 +183,8 @@ return {
             show_unindexed = true,
             ignore_patterns = { "*.git/*", "*/tmp/*", "*/node_modules/*" },
             workspaces = {
-              ["conf"] = "/Users/maririn312/.config",
-              ["project"] = "/Users/maririn312/projects",
+              ["conf"] = vim.fn.expand("~/.config"),
+              ["project"] = vim.fn.expand("~/projects"),
             },
           },
         },

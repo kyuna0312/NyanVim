@@ -21,7 +21,6 @@ return {
           "pyright",
           "ts_ls",
           "rust_analyzer",
-          "gopls",
           "jsonls",
           "html",
           "cssls",
@@ -34,7 +33,7 @@ return {
       -- Enhanced LSP configuration (nvim 0.11+ API)
       local servers = {
         'lua_ls', 'pyright', 'ts_ls', 'rust_analyzer',
-        'gopls', 'jsonls', 'html', 'cssls'
+        'jsonls', 'html', 'cssls'
       }
 
       -- Shared capabilities for every server

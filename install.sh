@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-REPO_URL="https://github.com/kyuna312/NyanVim.git"
+REPO_URL="https://github.com/kyuna0312/NyanVim.git"
 NVIM_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/nvim"
 BACKUP_SUFFIX=".bak.$(date +%Y%m%d%H%M%S)"
 
@@ -36,8 +36,8 @@ check_nvim_version() {
   if [[ -z "$major" || -z "$minor" ]]; then
     error "Could not parse Neovim version from: $version_output"
   fi
-  if [[ "$major" -eq 0 && "$minor" -lt 9 ]]; then
-    error "Neovim >= 0.9.0 required. Found: $version_output"
+  if [[ "$major" -eq 0 && "$minor" -lt 11 ]]; then
+    error "Neovim >= 0.11 required. Found: $version_output"
   fi
   success "Neovim $version_output"
 }
@@ -86,4 +86,4 @@ echo ""
 success "NyanVim installed! Run 'nvim' to start."
 echo ""
 info "Run ':checkhealth nyanvim' inside Neovim to verify your setup."
-info "Add customizations to ~/.config/nvim/lua/custom/ (see lua/custom/README.md)"
+info "Add customizations as files under ~/.config/nvim/lua/plugins/ (auto-imported)"

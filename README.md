@@ -168,7 +168,7 @@ nvim --headless "+Lazy! sync" +qa
 ## Languages Included
 
 LSP servers auto-installed via mason: **Lua · Python · TypeScript/JavaScript ·
-Rust · Go · JSON · HTML · CSS**. Treesitter additionally parses Bash, Markdown,
+Rust · JSON · HTML · CSS**. Treesitter additionally parses Go, Bash, Markdown,
 Vim, and more.
 
 ## Troubleshoot

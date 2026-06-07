@@ -5,9 +5,9 @@ vim.g.maplocalleader = " "
 -- Load core configuration
 require("config.options")
 
--- Lazy-load plugins and configurations
-vim.defer_fn(function()
-  require("config.lazy") -- Load lazy.nvim and plugins
-  require("config.keymaps")
-  require("config.autocmds")
-end, 0)
+-- Load lazy.nvim and plugins (synchronous so VimEnter-triggered plugins,
+-- e.g. the dashboard, register before VimEnter fires)
+require("config.lazy")
+require("config.keymaps")
+require("config.autocmds")
+require("nyanvim.discipline").cowboy()

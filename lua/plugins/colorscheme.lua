@@ -1,24 +1,23 @@
 return {
+  -- Active theme
   {
-    "navarasu/onedark.nvim",
+    "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000,
     config = function()
-      require("onedark").setup({
-        style = "darker",
+      require("tokyonight").setup({
+        style = "moon",
         transparent = false,
-        term_colors = true,
-        ending_tildes = false,
-        toggle_style_key = "<leader>ts",
-        code_style = {
-          comments = "italic",
-          keywords = "bold",
-          functions = "none",
-          strings = "none",
-          variables = "none",
-        },
+        terminal_colors = true,
       })
-      require("onedark").load()
+      vim.cmd([[colorscheme tokyonight-moon]])
     end,
+  },
+  -- craftzdog's theme: selectable via :colorscheme solarized-osaka
+  {
+    "craftzdog/solarized-osaka.nvim",
+    lazy = true,
+    priority = 1000,
+    opts = {},
   },
 }

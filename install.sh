@@ -56,6 +56,12 @@ if ! command -v cc &>/dev/null && ! command -v gcc &>/dev/null && ! command -v c
   warn "Install build-essential (Debian), base-devel (Arch), or Xcode CLI tools (macOS)"
 fi
 
+# tree-sitter CLI check (non-fatal — needed to compile Treesitter parsers)
+if ! command -v tree-sitter &>/dev/null; then
+  warn "tree-sitter CLI not found. Treesitter parsers can't compile without it."
+  warn "Install: cargo install tree-sitter-cli / npm i -g tree-sitter-cli / release binary"
+fi
+
 warn "Nerd Font required for icons. Install from https://www.nerdfonts.com/ if icons look broken."
 
 # ── Backup existing config ────────────────────────────────────

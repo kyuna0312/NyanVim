@@ -49,6 +49,7 @@ A hand-rolled Neovim config — IDE features, fast startup, VSCode-like feel —
 | ripgrep | any | `rg` — Telescope grep |
 | fd | any | `fd` — Telescope find |
 | C compiler | any | `gcc`/`clang` — Treesitter |
+| tree-sitter CLI | any | `tree-sitter` — compiles Treesitter parsers (`:TSUpdate`). `cargo install tree-sitter-cli` / `npm i -g tree-sitter-cli` / release binary |
 | Nerd Font | any | [nerdfonts.com](https://www.nerdfonts.com/) |
 | Claude Code CLI | any | optional — for in-editor Claude (`claude` on PATH) |
 

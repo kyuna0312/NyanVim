@@ -140,26 +140,29 @@ require("lazy").setup(vim.list_extend({
 
       local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-      -- Enhanced LSP configuration
-      local lspconfig = require('lspconfig')
+      -- Enhanced LSP configuration (nvim 0.11+ API)
       local servers = {
         'lua_ls', 'pyright', 'ts_ls', 'rust_analyzer',
         'gopls', 'jsonls', 'html', 'cssls'
       }
 
-      for _, lsp in ipairs(servers) do
-        lspconfig[lsp].setup({
-          capabilities = capabilities,
-          settings = {
-            -- Add specific LSP settings here
-            ["lua_ls"] = {
-              diagnostics = {
-                globals = { "vim" },
-              },
+      -- Shared capabilities for every server
+      vim.lsp.config('*', {
+        capabilities = capabilities,
+      })
+
+      -- Server-specific settings
+      vim.lsp.config('lua_ls', {
+        settings = {
+          Lua = {
+            diagnostics = {
+              globals = { 'vim' },
             },
           },
-        })
-      end
+        },
+      })
+
+      vim.lsp.enable(servers)
 
       -- Advanced completion setup
       local cmp = require('cmp')

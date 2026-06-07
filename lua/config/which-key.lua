@@ -98,31 +98,14 @@ wk.add({
   -- Code
   { "<leader>c", group = "Code" },
   { "<leader>ca", vim.lsp.buf.code_action, desc = "Code Actions" },
-  { "<leader>cd", "<cmd>TroubleToggle document_diagnostics<cr>", desc = "Document Diagnostics" },
-  { "<leader>cw", "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "Workspace Diagnostics" },
   { "<leader>cf", vim.lsp.buf.format, desc = "Format Document" },
   { "<leader>cr", vim.lsp.buf.rename, desc = "Rename Symbol" },
-  { "<leader>cs", "<cmd>AerialToggle<cr>", desc = "Toggle Symbol Outline" },
-  { "<leader>cx", "<cmd>TroubleToggle<cr>", desc = "Toggle Trouble" },
 
   -- AI / Claude
   { "<leader>a", group = "AI/Claude" },
 
-  -- Debug
-  { "<leader>d", group = "Debug" },
-  { "<leader>db", "<cmd>DapToggleBreakpoint<cr>", desc = "Toggle Breakpoint" },
-  { "<leader>dc", "<cmd>DapContinue<cr>", desc = "Continue/Start Debug" },
-  { "<leader>di", "<cmd>DapStepInto<cr>", desc = "Step Into" },
-  { "<leader>do", "<cmd>DapStepOver<cr>", desc = "Step Over" },
-  { "<leader>dO", "<cmd>DapStepOut<cr>", desc = "Step Out" },
-  { "<leader>dt", "<cmd>DapTerminate<cr>", desc = "Terminate" },
-  { "<leader>du", "<cmd>DapUiToggle<cr>", desc = "Toggle Debug UI" },
-
   -- View
   { "<leader>v", group = "View" },
-  { "<leader>ve", "<cmd>Neotree toggle<cr>", desc = "Toggle Explorer" },
-  { "<leader>vs", "<cmd>AerialToggle<cr>", desc = "Toggle Symbol Outline" },
   { "<leader>vp", "<cmd>Telescope projects<cr>", desc = "Show Projects" },
   { "<leader>vt", "<cmd>ToggleTerm direction=float<cr>", desc = "Toggle Terminal" },
-  { "<leader>vz", "<cmd>ZenMode<cr>", desc = "Toggle Zen Mode" },
 })

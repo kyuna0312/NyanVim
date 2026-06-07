@@ -105,6 +105,9 @@ wk.add({
   { "<leader>cs", "<cmd>AerialToggle<cr>", desc = "Toggle Symbol Outline" },
   { "<leader>cx", "<cmd>TroubleToggle<cr>", desc = "Toggle Trouble" },
 
+  -- AI / Claude
+  { "<leader>a", group = "AI/Claude" },
+
   -- Debug
   { "<leader>d", group = "Debug" },
   { "<leader>db", "<cmd>DapToggleBreakpoint<cr>", desc = "Toggle Breakpoint" },

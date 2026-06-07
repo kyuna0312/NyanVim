@@ -93,9 +93,3 @@ vim.g.copilot_no_tab_map = true
 vim.g.copilot_assume_mapped = true
 vim.g.copilot_tab_fallback = ""
 vim.g.copilot_idle_delay = 75
-
--- Load user custom options if present
-local custom_options = vim.fn.stdpath("config") .. "/lua/custom/options.lua"
-if vim.loop.fs_stat(custom_options) then
-  dofile(custom_options)
-end

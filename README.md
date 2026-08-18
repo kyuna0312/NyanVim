@@ -6,7 +6,7 @@ A hand-rolled Neovim config — IDE features, fast startup, VSCode-like feel —
 [lazy.nvim](https://github.com/folke/lazy.nvim) loader and one plugin per file.
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/kyuna312/dotfiles/refs/heads/main/logo.png" alt="NyanVim Logo">
+  <img src="https://raw.githubusercontent.com/kyuna0312/dotfiles/master/assets/logo.png" alt="NyanVim Logo">
 </div>
 
 <div align="center">
@@ -36,7 +36,7 @@ A hand-rolled Neovim config — IDE features, fast startup, VSCode-like feel —
 - **Git** — gitsigns, diffview, lazygit.
 - **Editor** — toggleterm, autopairs, Comment.nvim, todo-comments, project.nvim.
 - **Keymap discovery** — which-key (v3).
-- **Themes** — tokyonight-moon (default) + solarized-osaka (`:colorscheme solarized-osaka`).
+- **Theme** — tokyonight-moon re-grounded on the **H4CK3R // LUCY** palette (Cyberpunk: Edgerunners) + solarized-osaka as fallback (`:colorscheme solarized-osaka`).
 - **Discipline** — habit-trainer that nags on `hjkl`/arrow spamming.
 
 ## Requirements
@@ -145,6 +145,24 @@ lua/
   nyanvim/
     init.lua · health.lua · discipline.lua
 ```
+
+## Theme — H4CK3R // LUCY
+
+The default colorscheme is tokyonight-moon with its palette rewritten in
+`lua/plugins/colorscheme.lua` (`on_colors`) to the Lucy Kushinada night-city set:
+
+| Token | Hex | Where |
+|-------|-----|-------|
+| night navy | `#0a0a1a` | background — matches the terminal ground |
+| magenta | `#ff2a7a` | keywords, active states |
+| lucy blue | `#45c2f0` | functions, borders |
+| violet | `#b967ff` | numbers, Telescope frame |
+| neon cyan | `#00e5ff` | cursor line nr, Telescope matching |
+| mint | `#7dff9e` | strings (full matrix `#00ff41` is accent-only) |
+| gold | `#ffa600` | warnings, operators |
+
+Pairs with the same palette across tmux, Ghostty, kitty, WezTerm, starship and
+sketchybar — see [kyuna0312/dotfiles](https://github.com/kyuna0312/dotfiles).
 
 ## Customize
 
